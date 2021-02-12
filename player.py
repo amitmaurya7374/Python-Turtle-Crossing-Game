@@ -16,8 +16,12 @@ class Player(Turtle):
         self.color("green")
         self.shape("turtle")
         self.setheading(90)
-        self.goto(0, -280)
+        self.goto(STARTING_POSITION)
 
     def move_player(self):
         """This function help turtle to move_forward"""
-        self.forward(10)
+        self.forward(MOVE_DISTANCE)
+
+    def reset_player_position(self):
+        """This will reset a position when player reach a finish line"""
+        self.goto(STARTING_POSITION)
