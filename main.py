@@ -22,6 +22,11 @@ while game_is_on:
     screen.update()
     car.create_car()
     car.move_car()
+    for single_car in car.all_cars:
+        if single_car.distance(player) < 25:
+            score.game_over()
+            game_is_on = False
+
     if player.ycor() > 270:
         score.update_level()
         player.reset_player_position()
