@@ -9,19 +9,26 @@ STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
 
 
-class CarManager(Turtle):
+class CarManager:
     """This class create multiple car """
 
     def __init__(self):
-        super().__init__()
-        self.penup()
-        self.shape("square")
-        self.shapesize(stretch_len=3)
-        self.setheading(180)
-        self.goto(x=280, y=50)
-        self.color(random.choice(COLORS))
+        self.all_cars = []
 
-    # TODO: create multiple cars on random position
+    def create_car(self):
+        """Create a  Single car """
+        random_chance = random.randint(1,6)
+        if random_chance == 1:
+            new_car = Turtle()
+            new_car.shape("square")
+            new_car.shapesize(stretch_wid=1, stretch_len=3)
+            new_car.penup()
+            new_car.color(random.choice(COLORS))
+            random_y = random.randint(-250, 250)
+            new_car.goto(300, random_y)
+            self.all_cars.append(new_car) # added a  single car into a list
+
     def move_car(self):
         """Move towards left direction"""
-        self.forward(MOVE_INCREMENT)
+        for car in self.all_cars:
+            car.backward(STARTING_MOVE_DISTANCE)
